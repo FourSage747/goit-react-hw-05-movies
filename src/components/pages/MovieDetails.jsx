@@ -1,11 +1,11 @@
 import Notiflix from 'notiflix';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMoviesDetails } from './searchFilms';
-import { useEffect, useState } from 'react';
-import { Cast } from './Cast';
-import { Reviews } from './Reviews';
+import React, { Suspense, useEffect, useState } from 'react';
+
 
 const url_details = 'https://image.tmdb.org/t/p/w300';
+export const Context = React.createContext()
 
 export const MovieDetails = () => {
   const { id } = useParams();
@@ -55,39 +55,42 @@ export const MovieDetails = () => {
   }
 
   return (
-    <div>
-      {moviesDetails && (
-        <div>
+    <Context.Provider value={id}>
+      <div>
+        {moviesDetails && (
           <div>
-            <Link to={location.state}>Go back</Link>
+            <div>
+              <Link to={location.state}>Go back</Link>
+            </div>
+            <div>
+              <img
+                src={`${url_details}${moviesDetails.poster_path}`}
+                alt={moviesDetails.original_title}
+              />
+              <h2>{`${moviesDetails.title} (${today.getFullYear()})`}</h2>
+              <p>
+                User Score: {`${Math.round(moviesDetails.vote_average * 10)} %`}
+              </p>
+              <h3>Overview</h3>
+              <p>{moviesDetails.overview}</p>
+              <h4>Genres</h4>
+              <p>{genress}</p>
+            </div>
+            <div>
+              <h5>Additional information</h5>
+              <ul>
+                <Link to="cast" onClick={openCast}>Cast</Link>
+                <Link to="reviews" onClick={openReviews}>Reviews</Link>
+              </ul>
+                  <Outlet />
+                {/* <Suspense>
+                </Suspense> */}
+              {/* {cast && <Cast id={id} />}
+              {reviews && <Reviews id={id} />} */}
+            </div>
           </div>
-          <div>
-            <img
-              src={`${url_details}${moviesDetails.poster_path}`}
-              alt={moviesDetails.original_title}
-            />
-            <h2>{`${moviesDetails.title} (${today.getFullYear()})`}</h2>
-            <p>
-              User Score: {`${Math.round(moviesDetails.vote_average * 10)} %`}
-            </p>
-            <h3>Overview</h3>
-            <p>{moviesDetails.overview}</p>
-            <h4>Genres</h4>
-            <p>{genress}</p>
-          </div>
-          <div>
-            <h5>Additional information</h5>
-            <ul>
-              <Link to={`/movies/${id}/cast`} onClick={openCast}>Cast</Link>
-              <Link to={`/movies/${id}/reviews`} onClick={openReviews}>Reviews</Link>
-              {/* <li onClick={openCast}>Cast</li>
-              <li onClick={openReviews}>Reviews</li> */}
-            </ul>
-            {cast && <Cast id={id} />}
-            {reviews && <Reviews id={id} />}
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </Context.Provider>
   );
 };

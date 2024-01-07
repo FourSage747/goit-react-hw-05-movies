@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 import { getMoviesReviews } from './searchFilms';
+import { Context } from './MovieDetails';
 
 
-export const Reviews = ({id}) => {
+export const Reviews = () => {
+  const id = useContext(Context)
   const [moviesReviews, setMoviesReviews] = useState(null);
 
     useEffect(() => {

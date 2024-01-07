@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 import { getMoviesCast } from './searchFilms';
+import { Context } from './MovieDetails';
 
 
 const url_details = 'https://image.tmdb.org/t/p/w200';
 
-export const Cast = ({id}) => {
+export const Cast = () => {
+  const id = useContext(Context)
   const [moviesCast, setMoviesCast] = useState(null);
 
     useEffect(() => {
