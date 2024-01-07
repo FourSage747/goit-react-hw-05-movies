@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getMovies } from "./searchFilms";
 import { useEffect, useState } from "react";
 import Notiflix from "notiflix";
