@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { Link, useLocation, useParams, useHistory } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { getMoviesDetails } from './searchFilms';
 import { useEffect, useState } from 'react';
 import { Cast } from './Cast';
