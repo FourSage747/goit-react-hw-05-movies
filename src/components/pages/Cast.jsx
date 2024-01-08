@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const url_details = 'https://image.tmdb.org/t/p/w200';
 
-export const Cast = () => {
+const Cast = () => {
   const {id} = useParams()
   const [moviesCast, setMoviesCast] = useState(null);
 
@@ -42,3 +42,5 @@ export const Cast = () => {
       </div>
     );
 }
+
+export default Cast

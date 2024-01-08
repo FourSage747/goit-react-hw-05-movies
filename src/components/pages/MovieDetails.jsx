@@ -6,7 +6,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 
 const url_details = 'https://image.tmdb.org/t/p/w300';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { id } = useParams();
   const [moviesDetails, setMoviesDetails] = useState(null);
   const [cast, setCast] = useState(false);
@@ -58,7 +58,7 @@ export const MovieDetails = () => {
         {moviesDetails && (
           <div>
             <div>
-              <Link to={location.state}>Go back</Link>
+              <Link to="/">Go back</Link>
             </div>
             <div>
               <img
@@ -91,3 +91,5 @@ export const MovieDetails = () => {
       </div>
   );
 };
+
+export default MovieDetails

@@ -5,7 +5,7 @@ import { getMoviesReviews } from './searchFilms';
 import { useParams } from 'react-router-dom';
 
 
-export const Reviews = () => {
+const Reviews = () => {
   const {id} = useParams()
   const [moviesReviews, setMoviesReviews] = useState(null);
 
@@ -39,3 +39,4 @@ export const Reviews = () => {
       </div>
     );
 }
+export default Reviews
