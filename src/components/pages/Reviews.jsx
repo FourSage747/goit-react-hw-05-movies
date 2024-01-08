@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 import { getMoviesReviews } from './searchFilms';
-import { Context } from './MovieDetails';
+import { useParams } from 'react-router-dom';
 
 
 export const Reviews = () => {
-  const id = useContext(Context)
+  const {id} = useParams()
   const [moviesReviews, setMoviesReviews] = useState(null);
 
     useEffect(() => {

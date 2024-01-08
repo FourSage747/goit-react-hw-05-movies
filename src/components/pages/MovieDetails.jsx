@@ -5,7 +5,6 @@ import React, { Suspense, useEffect, useState } from 'react';
 
 
 const url_details = 'https://image.tmdb.org/t/p/w300';
-export const Context = React.createContext()
 
 export const MovieDetails = () => {
   const { id } = useParams();
@@ -55,7 +54,6 @@ export const MovieDetails = () => {
   }
 
   return (
-    <Context.Provider value={id}>
       <div>
         {moviesDetails && (
           <div>
@@ -82,15 +80,14 @@ export const MovieDetails = () => {
                 <Link to="cast" onClick={openCast}>Cast</Link>
                 <Link to="reviews" onClick={openReviews}>Reviews</Link>
               </ul>
+                <Suspense>
                   <Outlet />
-                {/* <Suspense>
-                </Suspense> */}
+                </Suspense>
               {/* {cast && <Cast id={id} />}
               {reviews && <Reviews id={id} />} */}
             </div>
           </div>
         )}
       </div>
-    </Context.Provider>
   );
 };
