@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 import { getMoviesCast } from './searchFilms';
