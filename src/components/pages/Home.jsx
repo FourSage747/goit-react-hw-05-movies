@@ -17,10 +17,6 @@ export const Home = () => {
         setFilms(response.data.results)
         console.log(response)
       })
-    // .then(films =>{
-    //   setFilms(films.results)
-    //    console.log(films)
-    //   })
     .catch(err => {
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'

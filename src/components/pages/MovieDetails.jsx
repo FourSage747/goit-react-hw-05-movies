@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { getMoviesDetails } from './searchFilms';
 import React, { Suspense, useEffect, useState } from 'react';
 
@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const [moviesDetails, setMoviesDetails] = useState(null);
   const [cast, setCast] = useState(false);
   const [reviews, setReviews] = useState(false);
-  const location = useLocation()
+  // const location = useLocation()
   
 
   useEffect(() => {
