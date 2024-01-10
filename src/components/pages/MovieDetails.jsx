@@ -32,15 +32,6 @@ const MovieDetails = () => {
       });
   }, [id]);
 
-  // const openCast = () => {
-  //   setCast(true);
-  //   setReviews(false);
-  // };
-
-  // const openReviews = () => {
-  //   setReviews(true);
-  //   setCast(false);
-  // };
 
   let genress = '';
   let today;
