@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMoviesDetails } from './searchFilms';
 import React, { Suspense, useEffect, useState } from 'react';
 import css from './CSS.module.css'
@@ -9,10 +9,8 @@ const url_details = 'https://image.tmdb.org/t/p/w300';
 const MovieDetails = () => {
   const { id } = useParams();
   const [moviesDetails, setMoviesDetails] = useState(null);
-  const [cast, setCast] = useState(false);
-  const [reviews, setReviews] = useState(false);
-  // const location = useLocation()
-  
+  const location = useLocation()
+  console.log(location);
 
   useEffect(() => {
     getMoviesDetails(id)
@@ -34,15 +32,15 @@ const MovieDetails = () => {
       });
   }, [id]);
 
-  const openCast = () => {
-    setCast(true);
-    setReviews(false);
-  };
+  // const openCast = () => {
+  //   setCast(true);
+  //   setReviews(false);
+  // };
 
-  const openReviews = () => {
-    setReviews(true);
-    setCast(false);
-  };
+  // const openReviews = () => {
+  //   setReviews(true);
+  //   setCast(false);
+  // };
 
   let genress = '';
   let today;
@@ -58,7 +56,7 @@ const MovieDetails = () => {
         {moviesDetails && (
           <div>
             <div className={css.goback}>
-              <Link className={css.gobacklink} to="/movies">Go back</Link>
+              <Link className={css.gobacklink} to={location.state}>Go back</Link>
             </div>
             <div className={css.moviesdetails}>
               <img
@@ -77,8 +75,8 @@ const MovieDetails = () => {
             <div className={css.moviesdetails}>
               <h5>Additional information</h5>
               <ul className={css.information}>
-                <Link className={css.additional} to="cast" onClick={openCast}>Cast</Link>
-                <Link className={css.additional} to="reviews" onClick={openReviews}>Reviews</Link>
+                <Link className={css.additional} to="cast" >Cast</Link>
+                <Link className={css.additional} to="reviews" >Reviews</Link>
               </ul>
                 <Suspense>
                   <Outlet />
