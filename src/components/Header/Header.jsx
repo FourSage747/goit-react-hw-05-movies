@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
+import css from '../pages/CSS.module.css'
 
 export const Header = () => {
   return (
     <div>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          <NavLink className="nav-link active" to="/">
+      <div className="navbar-collapse" id="navbarNavAltMarkup">
+        <div className={css.navbarcollapse}>
+          <NavLink className={css.navlink} to="/">
             Home
           </NavLink>
-          <NavLink className="nav-link" to="/movies">
+          <NavLink className={css.navlink} to="/movies">
             Movies
           </NavLink>
         </div>

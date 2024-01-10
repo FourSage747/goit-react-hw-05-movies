@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { getMoviesDetails } from './searchFilms';
 import React, { Suspense, useEffect, useState } from 'react';
-
+import css from './CSS.module.css'
 
 const url_details = 'https://image.tmdb.org/t/p/w300';
 
@@ -57,10 +57,10 @@ const MovieDetails = () => {
       <div>
         {moviesDetails && (
           <div>
-            <div>
-              <Link to="/">Go back</Link>
+            <div className={css.goback}>
+              <Link className={css.gobacklink} to="/movies">Go back</Link>
             </div>
-            <div>
+            <div className={css.moviesdetails}>
               <img
                 src={`${url_details}${moviesDetails.poster_path}`}
                 alt={moviesDetails.original_title}
@@ -72,19 +72,17 @@ const MovieDetails = () => {
               <h3>Overview</h3>
               <p>{moviesDetails.overview}</p>
               <h4>Genres</h4>
-              <p>{genress}</p>
+              <p>{genress ? genress : '---'}</p>
             </div>
-            <div>
+            <div className={css.moviesdetails}>
               <h5>Additional information</h5>
-              <ul>
-                <Link to="cast" onClick={openCast}>Cast</Link>
-                <Link to="reviews" onClick={openReviews}>Reviews</Link>
+              <ul className={css.information}>
+                <Link className={css.additional} to="cast" onClick={openCast}>Cast</Link>
+                <Link className={css.additional} to="reviews" onClick={openReviews}>Reviews</Link>
               </ul>
                 <Suspense>
                   <Outlet />
                 </Suspense>
-              {/* {cast && <Cast id={id} />}
-              {reviews && <Reviews id={id} />} */}
             </div>
           </div>
         )}

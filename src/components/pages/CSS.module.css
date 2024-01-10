@@ -1,0 +1,71 @@
+.navbarcollapse {
+    margin: 20px 0;
+    display: flex;
+    gap:  20px;
+    padding-left: 20px;
+    background-color: black;
+}
+.navlink {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+.treningtoday {
+    padding-left: 20px;
+}
+.homefilms {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.linkfilms {
+    text-decoration: none;
+    color: blue;
+}
+.goback {
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+    color: white;
+    margin: 20px 20px;
+}
+.gobacklink {
+    text-decoration: none;
+    color: white;
+}
+.searchForminput {
+    border: 0;
+    border-radius: 10px;
+    background-color: lightgray;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.searchFormbutton {
+    border: 0;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: gray;
+    margin-left: 10px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+.moviesdetails {
+    margin-left: 20px;
+}
+.information {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.additional {
+    /* text-decoration: none; */
+    font-weight: bold;
+    color: blue;
+}

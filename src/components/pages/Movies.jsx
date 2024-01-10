@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getMoviesSearch } from './searchFilms';
+import css from './CSS.module.css'
 
 const Movies = () => {
   const [value, setValue] = useState('');
@@ -50,32 +51,36 @@ const Movies = () => {
 
   return (
     <div>
-      <div>
-        <Link to='/'>Go back</Link>
+      <div className={css.goback}>
+        <Link className={css.gobacklink} to='/'>Go back</Link>
       </div>
       <form className="SearchForm" onSubmit={handleSubmit}>
         <input
-          className="SearchForm-input"
+          className={css.searchForminput}
           type="text"
           name="search"
           placeholder=""
           onChange={handleChange}
           value={value}
         />
-        <button type="submit" className="SearchForm-button">
+        <button type="submit" className={css.searchFormbutton}>
           <span className="SearchForm-button-label">Search</span>
         </button>
       </form>
+      <ul className={css.homefilms}>
       {moviesSearch &&
         moviesSearch.map(el => {
           return (
-            <li key={el.id}>
-              <Link to={`${el.id}`} state={location}>
-                {el.title}
-              </Link>
-            </li>
+          
+              <li key={el.id}>
+                <Link className={css.linkfilms} to={`${el.id}`} state={location}>
+                  {el.title}
+                </Link>
+              </li>
+            
           );
         })}
+        </ul>
     </div>
   );
 };

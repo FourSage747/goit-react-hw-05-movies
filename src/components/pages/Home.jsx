@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { getMovies } from "./searchFilms";
 import { useEffect, useState } from "react";
 import Notiflix from "notiflix";
+import css from './CSS.module.css'
 
 export const Home = () => {
   const [films, setFilms] = useState(null);
@@ -25,11 +26,11 @@ export const Home = () => {
     });
   },[])
   return (
-      <div>
+      <div className={css.treningtoday}>
         <h1>Trening today</h1>
-        <ul>
+        <ul className={css.homefilms}>
           {films && films.map(film => (<li key={film.id}>
-            <Link to={`movies/${film.id}`} state={location}>{film.title}</Link>
+            <Link className={css.linkfilms} to={`movies/${film.id}`} state={location}>{film.title}</Link>
           </li>))}
         </ul>
       </div>
