@@ -14,6 +14,7 @@ const Movies = () => {
   const handleChange = ({ target: { value } }) => {
     setValue(value.trim());
     setSearchParams({'search': value})
+    console.log(searchParams)
   };
 
   const handleSubmit = e => {
