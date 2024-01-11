@@ -66,8 +66,8 @@ const MovieDetails = () => {
             <div className={css.moviesdetails}>
               <h5>Additional information</h5>
               <ul className={css.information}>
-                <Link className={css.additional} to="cast" >Cast</Link>
-                <Link className={css.additional} to="reviews" >Reviews</Link>
+                <Link className={css.additional} to="cast" state={location.state}>Cast</Link>
+                <Link className={css.additional} to="reviews" state={location.state}>Reviews</Link>
               </ul>
                 <Suspense>
                   <Outlet />

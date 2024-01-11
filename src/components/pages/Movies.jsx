@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getMoviesSearch } from './searchFilms';
 import css from './CSS.module.css'
 
@@ -8,10 +8,12 @@ const Movies = () => {
   const [value, setValue] = useState('');
   const [searchText, setSearchText] = useState('');
   const [moviesSearch, setMoviesSearch] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation()
 
   const handleChange = ({ target: { value } }) => {
     setValue(value.trim());
+    setSearchParams({'search': value})
   };
 
   const handleSubmit = e => {
@@ -51,9 +53,9 @@ const Movies = () => {
 
   return (
     <div>
-      <div className={css.goback}>
+      {/* <div className={css.goback}>
         <Link className={css.gobacklink} to='/'>Go back</Link>
-      </div>
+      </div> */}
       <form className="SearchForm" onSubmit={handleSubmit}>
         <input
           className={css.searchForminput}
