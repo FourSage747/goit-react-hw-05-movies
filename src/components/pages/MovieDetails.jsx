@@ -47,7 +47,7 @@ const MovieDetails = () => {
         {moviesDetails && (
           <div>
             <div className={css.goback}>
-              <Link className={css.gobacklink} to={location.state}>Go back</Link>
+              <Link className={css.gobacklink} to={location.state ? location.state : "/"}>Go back</Link>
             </div>
             <div className={css.moviesdetails}>
               <img
