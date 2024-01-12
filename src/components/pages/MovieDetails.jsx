@@ -50,10 +50,10 @@ const MovieDetails = () => {
               <Link className={css.gobacklink} to={location.state ? location.state : "/"}>Go back</Link>
             </div>
             <div className={css.moviesdetails}>
-              <img
+              {moviesDetails.poster_path ? <img
                 src={`${url_details}${moviesDetails.poster_path}`}
                 alt={moviesDetails.original_title}
-              />
+              /> : <b>No image for this film</b>}
               <h2>{`${moviesDetails.title} (${today.getFullYear()})`}</h2>
               <p>
                 User Score: {`${Math.round(moviesDetails.vote_average * 10)} %`}

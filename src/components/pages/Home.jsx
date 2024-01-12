@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Notiflix from "notiflix";
 import css from './CSS.module.css'
 
+
+
 export const Home = () => {
   const [films, setFilms] = useState(null);
   const location = useLocation()

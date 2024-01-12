@@ -12,7 +12,7 @@ const Reviews = () => {
     useEffect(() => {
         getMoviesReviews(id)
         .then(response => {
-          if (response.data === 0) {
+          if (response.data.results.length === 0) {
               Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
               return;
           }
