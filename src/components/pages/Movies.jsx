@@ -49,12 +49,7 @@ const Movies = () => {
     }
   }, [searchText]);
 
-  // useEffect(()=>{
-  //   const parsedSearch = localStorage.getItem('result');
-  //   if (parsedSearch) {
-  //       setMoviesSearch(JSON.parse(parsedSearch))
-  //   }
-  // },[])
+
 
   return (
     <div>
