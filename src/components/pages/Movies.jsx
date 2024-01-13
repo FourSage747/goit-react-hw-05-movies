@@ -1,15 +1,18 @@
 import Notiflix from 'notiflix';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getMoviesSearch } from './searchFilms';
 import css from './CSS.module.css'
+import { Context } from 'components/Layout/Layout';
 
 const Movies = () => {
   const [value, setValue] = useState('');
   const [searchText, setSearchText] = useState('');
-  const [moviesSearch, setMoviesSearch] = useState(null);
+  // const [moviesSearch, setMoviesSearch] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation()
+  const context = useContext(Context)
+  const {films, setFilms} = context
 
   const handleChange = ({ target: { value } }) => {
     setValue(value.trim());
@@ -32,8 +35,9 @@ const Movies = () => {
             );
             return;
             }
-            setMoviesSearch(response.data.results);
-            localStorage.setItem('result', JSON.stringify(response.data.results))
+            // setMoviesSearch(response.data.results);
+            // localStorage.setItem('result', JSON.stringify(response.data.results))
+            setFilms(response.data.results)
             console.log(response)
         })
         .catch(err => {
@@ -45,12 +49,12 @@ const Movies = () => {
     }
   }, [searchText]);
 
-  useEffect(()=>{
-    const parsedSearch = localStorage.getItem('result');
-    if (parsedSearch) {
-        setMoviesSearch(JSON.parse(parsedSearch))
-    }
-  },[])
+  // useEffect(()=>{
+  //   const parsedSearch = localStorage.getItem('result');
+  //   if (parsedSearch) {
+  //       setMoviesSearch(JSON.parse(parsedSearch))
+  //   }
+  // },[])
 
   return (
     <div>
@@ -71,8 +75,8 @@ const Movies = () => {
         </button>
       </form>
       <ul className={css.homefilms}>
-      {moviesSearch &&
-        moviesSearch.map(el => {
+      {films &&
+        films.map(el => {
           return (
           
               <li key={el.id}>

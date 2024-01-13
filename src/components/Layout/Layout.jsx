@@ -1,14 +1,19 @@
 import { Header } from 'components/Header/Header';
-import { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
+export const Context = React.createContext()
+
 export const Layout = () => {
+  const [movies, setMovies] = useState([])
   return (
     <>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
-      </Suspense>
+      <Context.Provider value={{films: movies, setFilms: setMovies}}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
+      </Context.Provider>
     </>
   );
 };
