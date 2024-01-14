@@ -51,7 +51,7 @@ const Movies = () => {
     const filter = searchParams.get('search')
     setSearchFilter(filter)
     console.log(filter)
-  },[])
+  },[searchParams])
 
   return (
     <div>
